@@ -43,6 +43,40 @@ public function initialize()
 ### Initialize the Db Acl tables
 - Create the ACL related tables by running `bin/cake Migrations.migrations migrate -p Acl`
 
+### Model Setup
+#### Acting as a requester
+- Add the requester behavior to `GroupsTable` and `UsersTable`
+ - Add `$this->addBehavior('Acl.Acl', ['type' => 'requester']);` to the `initialize` function in the files `src/Model/Table/UsersTable.php` and `src/Model/Table/GroupsTable.php`
+#### Implement `parentNode` function in `Group` entity
+Add the following implementation of `parentNode` to the file `src/Model/Entity/Group.php`:
+```php
+public function parentNode()
+{
+	return null;
+}
+```
+#### Implement `parentNode` function in `User` entity
+Add the following implementation of `parentNode` to the file `src/Model/Entity/User.php`:
+```php
+public function parentNode()
+{
+	if (!$this->id) {
+		return null;
+	}
+	if (isset($this->group_id)) {
+		$groupId = $this->group_id;
+	} else {
+		$Users = TableRegistry::get('Users');
+		$user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
+		$groupId = $user->group_id;
+	}
+	if (!$groupId) {
+		return null;
+	}
+	return ['Groups' => ['id' => $groupId]];
+}
+```
+
 ### Creating ACOs
 The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in the CakePHP 2 ACL tutorial is now integrated into the [CakePHP ACL plugin](https://github.com/cakephp/acl) for CakePHP 3.
 - Run `bin/cake acl_extras aco_sync` to automatically create ACOs.
