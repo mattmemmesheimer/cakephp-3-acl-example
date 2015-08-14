@@ -64,4 +64,4 @@ First, find the IDs of each group you want to grant permissions on.  There are s
   - Run `bin/cake acl grant Groups.3 controllers/Posts/view`
   - Run `bin/cake acl grant Groups.3 controllers/Widgets/view`
 - Allow all groups to logout
-  - Run `bin/cake acl grant Groups.1
+  - Run `bin/cake acl grant Groups.1 controllers/Users/logout`
