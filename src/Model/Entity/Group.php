@@ -18,4 +18,9 @@ class Group extends Entity
         '*' => true,
         'id' => false,
     ];
+	
+	public function parentNode()
+	{
+		return null;
+	}
 }
