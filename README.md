@@ -52,5 +52,16 @@ The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in
 	
 ### Configuring Permissions
 #### Configuring permissions using the ACL shell
+First, find the IDs of each group you want to grant permissions on.  There are several ways of doing this.  Since we will be at the console anyway, the quickest way is probably to run `bin/cake acl view aro` to view the ARO tree.  In this example, we will assume the `Administrator`, `Manager`, and `User` groups have IDs 1, 2, and 3 respectively.
 - Grant members of the `Administrator` group permission to everything
   - Run `bin/cake acl grant Groups.1 controllers`
+- Grant members of the `Manager` group permission to all actions in `Posts` and `Widgets`
+  - Run `bin/cake acl deny Groups.2 controllers`
+  - Run `bin/cake acl grant Groups.2 controllers/Posts`
+  - Run `bin/cake acl grant Groups.2 controllers/Widgets`
+- Grant members of the `User` group permission to view `Posts` and `Widgets`
+  - Run `bin/cake acl deny Groups.3 controllers`
+  - Run `bin/cake acl grant Groups.3 controllers/Posts/view`
+  - Run `bin/cake acl grant Groups.3 controllers/Widgets/view`
+- Allow all groups to logout
+  - Run `bin/cake acl grant Groups.1
