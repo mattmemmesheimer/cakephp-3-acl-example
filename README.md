@@ -43,9 +43,28 @@ public function logout() {
 	$this->redirect($this->Auth->logout());
 }
 ```
-- Add `src/Templates/Users/login.ctp`
-- Modify `UsersTable::beforeSave` to hash the password before saving
-- Include and configure the `AclComponent` and `AuthComponent` in `AppController`
+Add `src/Templates/Users/login.ctp`
+```php
+<?= $this->Form->create('User', ['action' => 'login']) ?>
+<fieldset>
+	<legend><?= __('Login') ?></legend>
+	<?= $this->Form->input('username') ?>
+	<?= $this->Form->input('password') ?>
+	<?= $this->Form->submit(__('Login')) ?>
+</fieldset>
+<?= $this->Form->end() ?>
+```
+Modify `UsersTable::beforeSave` to hash the password before saving
+```php
+public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
+	\ArrayObject $options)
+{
+	$hasher = new DefaultPasswordHasher;
+	$entity->password = $hasher->hash($entity->password);
+	return true;
+}
+```
+Include and configure the `AclComponent` and `AuthComponent` in `AppController`
  
 ### Add Temporary Auth Overrides
 Temporarily allow access to `UsersController` and `GroupsController` so groups and users can be added. Add the following implementation of `beforeFilter` to `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`:
