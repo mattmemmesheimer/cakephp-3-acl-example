@@ -10,6 +10,13 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+	public function initialize()
+	{
+		parent::initialize();
+		
+		// Allow full access to this controller
+		$this->Auth->allow();
+	}
 
     /**
      * Index method
