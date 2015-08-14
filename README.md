@@ -65,6 +65,37 @@ public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity,
 }
 ```
 Include and configure the `AclComponent` and `AuthComponent` in `AppController`
+```php
+$this->loadComponent('Auth', [
+	'authorize' => [
+		'Acl.Actions' => ['actionPath' => 'controllers/']
+	],
+	'loginAction' => [
+		'plugin' => false,
+		'controller' => 'Users',
+		'action' => 'login'
+	],
+	'loginRedirect' => [
+		'plugin' => false,
+		'controller' => 'Cameras',
+		'action' => 'index'
+	],
+	'logoutRedirect' => [
+		'plugin' => false,
+		'controller' => 'Users',
+		'action' => 'login'
+	],
+	'unauthorizedRedirect' => [
+		'controller' => 'Cameras',
+		'action' => 'index',
+		'prefix' => false
+	],
+	'authError' => 'You are not authorized to access that location.',
+	'flash' => [
+		'element' => 'error'
+	]
+]);
+```
  
 ### Add Temporary Auth Overrides
 Temporarily allow access to `UsersController` and `GroupsController` so groups and users can be added. Add the following implementation of `beforeFilter` to `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`:
