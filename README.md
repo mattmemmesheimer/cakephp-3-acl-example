@@ -1,5 +1,5 @@
 # cakephp-3-acl-example
-A very simple example how to use the ACL plugin for CakePHP 3.  This example is based on [Simple Acl controlled Application](http://book.cakephp.org/2.0/en/tutorials-and-examples/simple-acl-controlled-application/simple-acl-controlled-application.html) for CakePHP 2.
+A very simple CakePHP 3 ACL plugin usage example.  This example is based on [Simple Acl controlled Application](http://book.cakephp.org/2.0/en/tutorials-and-examples/simple-acl-controlled-application/simple-acl-controlled-application.html) for CakePHP 2.
 
 ### Getting started
 - Run `composer update` from the `app` directory to download the CakePHP source
