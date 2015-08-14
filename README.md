@@ -28,7 +28,18 @@ bin/cake bake all widgets
 - Add `src/Templates/Users/login.ctp`
 - Modify `UsersTable::beforeSave` to hash the password before saving
 - Include and configure the `AclComponent` and `AuthComponent` in `AppController`
-- Temporarily allow access to `UsersController` and `GroupsController`
+ 
+### Add Temporary Auth Overrides
+Temporarily allow access to `UsersController` and `GroupsController` so groups and users can be added. 
+- Add the following implementation of `beforeFilter` to `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`
+```php
+public function initialize()
+{
+	parent::initialize();
+	
+	$this->Auth->allow();
+}
+```  
 
 ### Initialize the Db Acl tables
 - Create the ACL related tables by running `bin/cake Migrations.migrations migrate -p Acl`
@@ -49,6 +60,8 @@ The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in
     - `test-administrator` is an `Administrator`
     - `test-manager` is a `Manager`
     - `test-user` is a `User`
+	
+### Remove Temporary Auth Overrides
 	
 ### Configuring Permissions
 #### Configuring permissions using the ACL shell
