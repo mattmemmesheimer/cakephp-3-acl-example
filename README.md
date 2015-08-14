@@ -1,26 +1,39 @@
-# CakePHP Application Skeleton
+# cakephp-3-acl-example
+A very simple example how to use the ACL plugin for CakePHP 3.  This example is based on [Simple Acl controlled Application](http://book.cakephp.org/2.0/en/tutorials-and-examples/simple-acl-controlled-application/simple-acl-controlled-application.html) for CakePHP 2.
 
-[![Build Status](https://api.travis-ci.org/cakephp/app.png)](https://travis-ci.org/cakephp/app)
-[![License](https://poser.pugx.org/cakephp/app/license.svg)](https://packagist.org/packages/cakephp/app)
+### Getting started
+- Run `composer update` from the `app` directory to download the CakePHP source
+- Add the [CakePHP ACL plugin](https://github.com/cakephp/acl) to `app/composer.json`
+- Run `composer update` to download the ACL source
+- Include the ACL plugin in `app/config/bootstrap.php` 
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.0.
-
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
-
-## Installation
-
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
-
-If Composer is installed globally, run
-```bash
-composer create-project --prefer-dist cakephp/app [app_name]
+```php
+Plugin::load('Acl', ['bootstrap' => true]);
 ```
 
-You should now be able to visit the path to where you installed the app and see
-the setup traffic lights.
+###Example schema
+An example schema taken from the CakePHP 2 ACL tutorial can be found in the file `example.sql`.
+After the schema is created, proceed to "bake" the application.
 
-## Configuration
+```bash
+bin/cake bake all groups
+bin/cake bake all users
+bin/cake bake all posts
+bin/cake bake all widgets
+```
 
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
+### Preparing to Add Auth
+- Add `UsersController::login` function
+- Add `UsersController::logout` function
+- Add `src/Templates/Users/login.ctp`
+- Modify `UsersTable::beforeSave` to hash the password before saving
+- Include and configure the `AclComponent` and `AuthComponent` in `AppController`
+- Temporarily allow access to `UsersController` and `GroupsController`
+
+### Initialize the Db Acl tables
+- Create the ACL related tables by running `bin/cake Migrations.migrations migrate -p Acl`
+
+### Creating ACOs
+The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in the CakePHP 2 ACL tutorial is now integrated into the [CakePHP ACL plugin](https://github.com/cakephp/acl) for CakePHP 3.
+- Run `bin/cake acl_extras aco_sync` to automatically create ACOs.
+- ACOs and AROs can be managed manually using the ACL shell.  Run `bin/cake acl` for more information.
