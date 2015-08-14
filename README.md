@@ -23,7 +23,7 @@ bin/cake bake all widgets
 ```
 
 ### Preparing to Add Auth
-- Add `UsersController::login` function
+Add `UsersController::login` function
 ```php
 public function login() {
 	if ($this->request->is('post')) {
@@ -36,7 +36,13 @@ public function login() {
 	}
 }
 ```
-- Add `UsersController::logout` function
+Add `UsersController::logout` function
+```php
+public function logout() {
+	$this->Flash->success(__('Good-Bye'));
+	$this->redirect($this->Auth->logout());
+}
+```
 - Add `src/Templates/Users/login.ctp`
 - Modify `UsersTable::beforeSave` to hash the password before saving
 - Include and configure the `AclComponent` and `AuthComponent` in `AppController`
