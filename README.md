@@ -42,7 +42,10 @@ The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in
 #### Create Groups
 - Navigate to `/groups/add` and add the groups
   - For this example, we will create `Administrator`, `Manager`, and `User`
+
 #### Create Users
 - Navigate to `/users/add` and add the users
   - For this example, we will create one user in each group
     - `test-administrator` is an `Administrator`
+    - `test-manager` is a `Manager`
+    - `test-user` is a `User`
