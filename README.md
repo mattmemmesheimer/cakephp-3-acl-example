@@ -30,8 +30,7 @@ bin/cake bake all widgets
 - Include and configure the `AclComponent` and `AuthComponent` in `AppController`
  
 ### Add Temporary Auth Overrides
-Temporarily allow access to `UsersController` and `GroupsController` so groups and users can be added. 
-- Add the following implementation of `beforeFilter` to `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`
+Temporarily allow access to `UsersController` and `GroupsController` so groups and users can be added. Add the following implementation of `beforeFilter` to `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`
 ```php
 public function initialize()
 {
