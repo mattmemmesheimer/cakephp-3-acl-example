@@ -14,7 +14,6 @@
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('username') ?></th>
-            <th><?= $this->Paginator->sort('password') ?></th>
             <th><?= $this->Paginator->sort('group_id') ?></th>
             <th><?= $this->Paginator->sort('created') ?></th>
             <th><?= $this->Paginator->sort('modified') ?></th>
@@ -26,7 +25,6 @@
         <tr>
             <td><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->username) ?></td>
-            <td><?= h($user->password) ?></td>
             <td>
                 <?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : '' ?>
             </td>

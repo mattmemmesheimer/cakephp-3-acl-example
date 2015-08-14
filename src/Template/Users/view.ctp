@@ -17,8 +17,6 @@
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Username') ?></h6>
             <p><?= h($user->username) ?></p>
-            <h6 class="subheader"><?= __('Password') ?></h6>
-            <p><?= h($user->password) ?></p>
             <h6 class="subheader"><?= __('Group') ?></h6>
             <p><?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : '' ?></p>
         </div>

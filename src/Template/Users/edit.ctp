@@ -20,7 +20,6 @@
         <legend><?= __('Edit User') ?></legend>
         <?php
             echo $this->Form->input('username');
-            echo $this->Form->input('password');
             echo $this->Form->input('group_id', ['options' => $groups]);
         ?>
     </fieldset>
