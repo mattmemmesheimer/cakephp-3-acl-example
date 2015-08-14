@@ -64,7 +64,7 @@ public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity,
 	return true;
 }
 ```
-Include and configure the `AclComponent` and `AuthComponent` in `AppController`
+Include and configure the `AuthComponent` to use the `AclComponent` in the `AppController`
 ```php
 $this->loadComponent('Auth', [
 	'authorize' => [
