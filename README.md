@@ -24,6 +24,18 @@ bin/cake bake all widgets
 
 ### Preparing to Add Auth
 - Add `UsersController::login` function
+```php
+public function login() {
+	if ($this->request->is('post')) {
+		$user = $this->Auth->identify();
+		if ($user) {
+			$this->Auth->setUser($user);
+			return $this->redirect($this->Auth->redirectUrl());
+		}
+		$this->Flash->error(__('Your username or password was incorrect.'));
+	}
+}
+```
 - Add `UsersController::logout` function
 - Add `src/Templates/Users/login.ctp`
 - Modify `UsersTable::beforeSave` to hash the password before saving
