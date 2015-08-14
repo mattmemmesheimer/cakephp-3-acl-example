@@ -37,3 +37,12 @@ bin/cake bake all widgets
 The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in the CakePHP 2 ACL tutorial is now integrated into the [CakePHP ACL plugin](https://github.com/cakephp/acl) for CakePHP 3.
 - Run `bin/cake acl_extras aco_sync` to automatically create ACOs.
 - ACOs and AROs can be managed manually using the ACL shell.  Run `bin/cake acl` for more information.
+
+### Creating Users and Groups
+#### Create Groups
+- Navigate to `/groups/add` and add the groups
+  - For this example, we will create `Administrator`, `Manager`, and `User`
+#### Create Users
+- Navigate to `/users/add` and add the users
+  - For this example, we will create one user in each group
+    - `test-administrator` is an `Administrator`
