@@ -76,4 +76,12 @@ class UsersTable extends Table
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
         return $rules;
     }
+	
+	public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
+		\ArrayObject $options)
+	{
+		$hasher = new DefaultPasswordHasher;
+		$entity->password = $hasher->hash($entity->password);
+		return true;
+	}
 }
