@@ -61,6 +61,7 @@ The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in
     - `test-user` is a `User`
 	
 ### Remove Temporary Auth Overrides
+Remove the temporary auth overrides by removing the `beforeFilter` function or the call to `$this->Auth->allow();` in `src/Controllers/UsersController.php` and `src/Controllers/GroupsController.php`.
 	
 ### Configuring Permissions
 #### Configuring permissions using the ACL shell
