@@ -49,3 +49,8 @@ The [ACL Extras](https://github.com/markstory/acl_extras/) plugin referred to in
     - `test-administrator` is an `Administrator`
     - `test-manager` is a `Manager`
     - `test-user` is a `User`
+	
+### Configuring Permissions
+#### Configuring permissions using the ACL shell
+- Grant members of the `Administrator` group permission to everything
+  - Run `bin/cake acl grant Groups.1 controllers`
