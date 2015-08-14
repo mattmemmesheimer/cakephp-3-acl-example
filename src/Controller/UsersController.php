@@ -107,4 +107,30 @@ class UsersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Login method
+     *
+     * @return void Redirects on successful login, renders view otherwise.
+     */
+	public function login() {
+		if ($this->request->is('post')) {
+			$user = $this->Auth->identify();
+			if ($user) {
+				$this->Auth->setUser($user);
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Flash->error(__('Your username or password was incorrect.'));
+		}
+	}
+	
+    /**
+     * Logout method
+     *
+     * @return void Redirects to the logout redirect location defined in the AuthComponent
+     */
+	public function logout() {
+		$this->Flash->success(__('Good-Bye'));
+		$this->redirect($this->Auth->logout());
+	}
 }
