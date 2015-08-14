@@ -56,6 +56,8 @@ Add `src/Templates/Users/login.ctp`
 ```
 Modify `UsersTable::beforeSave` to hash the password before saving
 ```php
+use Cake\Auth\DefaultPasswordHasher;
+...
 public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
 	\ArrayObject $options)
 {
