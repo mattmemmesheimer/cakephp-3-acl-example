@@ -54,7 +54,7 @@ class AppController extends Controller
 			],
 			'loginRedirect' => [
 				'plugin' => false,
-				'controller' => 'Cameras',
+				'controller' => 'Posts',
 				'action' => 'index'
 			],
 			'logoutRedirect' => [
@@ -63,7 +63,7 @@ class AppController extends Controller
 				'action' => 'login'
 			],
 			'unauthorizedRedirect' => [
-				'controller' => 'Cameras',
+				'controller' => 'Posts',
 				'action' => 'index',
 				'prefix' => false
 			],
