@@ -15,7 +15,7 @@ class GroupsController extends AppController
 		parent::initialize();
 
 		// Allow full access to this controller
-		$this->Auth->allow();
+		//$this->Auth->allow();
 	}
 
     /**
