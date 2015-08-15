@@ -187,7 +187,9 @@ First, find the IDs of each group you want to grant permissions on.  There are s
   - Run `bin/cake acl grant Groups.2 controllers/Widgets`
 - Grant members of the `User` group permission to view `Posts` and `Widgets`
   - Run `bin/cake acl deny Groups.3 controllers`
+  - Run `bin/cake acl grant Groups.3 controllers/Posts/index`
   - Run `bin/cake acl grant Groups.3 controllers/Posts/view`
+  - Run `bin/cake acl grant Groups.3 controllers/Widgets/index`
   - Run `bin/cake acl grant Groups.3 controllers/Widgets/view`
 - Allow all groups to logout
   - Run `bin/cake acl grant Groups.1 controllers/Users/logout`
