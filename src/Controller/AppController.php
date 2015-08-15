@@ -26,6 +26,11 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
+	public $components = [
+        'Acl' => [
+			'className' => 'Acl.Acl'
+		]
+    ];
 
     /**
      * Initialization hook method.
