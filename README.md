@@ -17,7 +17,7 @@ An example schema taken from the CakePHP 2 ACL tutorial:
 CREATE TABLE users (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
-    password CHAR(40) NOT NULL,
+    password CHAR(100) NOT NULL,
     group_id INT(11) NOT NULL,
     created DATETIME,
     modified DATETIME
