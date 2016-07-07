@@ -77,7 +77,7 @@ public function logout() {
 ```
 Add `src/Templates/Users/login.ctp`
 ```php
-<?= $this->Form->create('User', ['action' => 'login']) ?>
+<?= $this->Form->create() ?>
 <fieldset>
 	<legend><?= __('Login') ?></legend>
 	<?= $this->Form->input('username') ?>
