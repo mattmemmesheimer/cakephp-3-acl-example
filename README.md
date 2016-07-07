@@ -117,7 +117,7 @@ $this->loadComponent('Auth', [
 	],
 	'loginRedirect' => [
 		'plugin' => false,
-		'controller' => 'Cameras',
+		'controller' => 'Posts',
 		'action' => 'index'
 	],
 	'logoutRedirect' => [
@@ -126,8 +126,8 @@ $this->loadComponent('Auth', [
 		'action' => 'login'
 	],
 	'unauthorizedRedirect' => [
-		'controller' => 'Cameras',
-		'action' => 'index',
+		'controller' => 'Users',
+		'action' => 'login',
 		'prefix' => false
 	],
 	'authError' => 'You are not authorized to access that location.',
