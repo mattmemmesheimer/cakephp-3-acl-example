@@ -2,9 +2,8 @@
 A very simple CakePHP 3 ACL plugin usage example.  This example is based on [Simple Acl controlled Application](http://book.cakephp.org/2.0/en/tutorials-and-examples/simple-acl-controlled-application/simple-acl-controlled-application.html) for CakePHP 2.  The differences are described in this document.  The files in this repository contain the changes and implementations of functions discuessed below.
 
 ### Getting started
-- Run `composer update` from the `app` directory to download the CakePHP source
-- Add the [CakePHP ACL plugin](https://github.com/cakephp/acl) to `app/composer.json`
-- Run `composer update` to download the ACL source
+- Assuming you are using [composer](https://getcomposer.org/), get a copy of the latest cakephp release by running `composer create-project --prefer-dist cakephp/app acl-example`.  This will create an empty CakePHP project in the `acl-example` directory.  Answer YES when asked if folder permissions should be set.
+- Install the [CakePHP ACL plugin](https://github.com/cakephp/acl) by running `composer require cakephp/acl`
 - Include the ACL plugin in `app/config/bootstrap.php` 
 
 ```php
